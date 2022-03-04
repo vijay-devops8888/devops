@@ -5,6 +5,9 @@ on:
     branches: [ master ]
   pull_request:
     branches: [main]
+env: 
+ tar_name: ${{ secrets.TAR_NAME }}
+ 
 jobs:
  build:
   runs-on: ubuntu-latest
@@ -13,7 +16,7 @@ jobs:
      uses: actions/checkout@v2
    - name: calling secret
      run: |
-      tar -cvf ${{ secrets.TAR_NAME }}.tar *
+      tar -cvf ${{ env.tar_name }}.tar *
       ls -ltr 
   #calling-reuse-workflow-tar:
    # if: ${{github.event}} == 'push'
