@@ -15,9 +15,9 @@ jobs:
      run: |
       git config --global user.name ${{ secrets.USER_NAME }} 
       git config --global user.email ${{ secrets.USER_EMAIL }}
+      git remote set-url origin https://rajkumarvijay:${{ secrets.TOKEN }}@github.com/rajkumarvijay/reusable-.git
       git add .
       git commit -m "commiting from other repo"
-      git remote set-url origin https://rajkumarvijay:${{ secrets.TOKEN }}@github.com/rajkumarvijay/reusable-.git
       git push -u origin main
   #calling-reuse-workflow-tar:
    # if: ${{github.event}} == 'push'
