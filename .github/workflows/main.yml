@@ -10,7 +10,7 @@ jobs:
     if: ${{github.event}} == 'push'
     uses: ./.github/workflows/tar.yml
     with:
-      tarfilename: echo ${{ secrets.TAR_NAME }}
+      tarfilename: ${{ secrets.TAR_NAME }}
   
   calling-reuse-workflow-zip:
     if: ${{github.event == 'pull_request'}}
