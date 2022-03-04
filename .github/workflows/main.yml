@@ -6,14 +6,23 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  calling-reuse-workflow-tar:
-    if: ${{github.event}} == 'push'
-    uses: ./.github/workflows/tar.yml
-    with:
-      tarfilename: ${{ secrets.TAR_NAME }}
+ build:
+  runs-on: ubuntu-latest
+  steps:
+   - name: checkout
+     uses: actions/checkout@v2
+   - name: calling secret
+     run: |
+      tar -cvf ${{ secrets.TAR_NAME }}.tar *
+      ls -ltr 
+  #calling-reuse-workflow-tar:
+   # if: ${{github.event}} == 'push'
+    #uses: ./.github/workflows/tar.yml
+    #with:
+     # tarfilename: ${{ secrets.TAR_NAME }}
   
-  calling-reuse-workflow-zip:
-    if: ${{github.event == 'pull_request'}}
-    uses: ./.github/workflows/zip.yml
-    with:
-      vname: vijay
+  #calling-reuse-workflow-zip:
+   # if: ${{github.event == 'pull_request'}}
+    #uses: ./.github/workflows/zip.yml
+    #with:
+     # vname: vijay
