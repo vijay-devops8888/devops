@@ -1,0 +1,22 @@
+ 
+name: to tar files
+on:
+  workflow_call:
+     inputs: 
+       tarfilename:
+        required: false
+        type: string
+
+jobs:
+   
+  build:
+    runs-on: ubuntu-latest
+    steps:
+       
+      - uses: actions/checkout@v2
+      
+      - name: Run a multi-line script
+        run: |
+           ls -ltr
+           tar -cvf ${{inputs.tarfilename}}.tar *
+           ls -ltr
