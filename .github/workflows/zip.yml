@@ -1,0 +1,22 @@
+
+name: create zip file
+on:
+  workflow_call:
+     inputs: 
+       vname:
+        required: false
+        type: string
+
+jobs:
+   
+  build:
+    runs-on: ubuntu-latest
+    steps:
+       
+      - uses: actions/checkout@v2
+      
+      - name: Running vname zip
+        run: |
+           ls -ltr
+           zip ${{inputs.vname}}.zip *
+           ls -ltr           
